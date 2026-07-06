@@ -265,4 +265,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get subtitle_ocr => 'Extract text from images';
+
+  @override
+  String get link => 'https://4evergr8-en.blogspot.com/p/image.html';
 }
