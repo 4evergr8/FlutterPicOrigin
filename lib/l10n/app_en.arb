@@ -79,5 +79,10 @@
   "image_thumbnail_text": "Supports video links, BV ID, and b23 short links",
   "video_backup": "Bilibili video backup",
   "ua_string": "User-Agent string",
-  "start": "Start"
+  "start": "Start",
+  "subtitle_url": "URL decoding and editing",
+  "subtitle_base64": "Base64 encoding and decoding",
+  "subtitle_beast": "Beast language encoding and decoding",
+  "subtitle_qrcode": "Scan barcodes and QR codes from images",
+  "subtitle_ocr": "Extract text from images"
 }
