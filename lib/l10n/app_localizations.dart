@@ -610,6 +610,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Extract text from images'**
   String get subtitle_ocr;
+
+  /// No description provided for @link.
+  ///
+  /// In en, this message translates to:
+  /// **'https://4evergr8-en.blogspot.com/p/image.html'**
+  String get link;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
