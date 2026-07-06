@@ -84,5 +84,6 @@
   "subtitle_base64": "Base64 encoding and decoding",
   "subtitle_beast": "Beast language encoding and decoding",
   "subtitle_qrcode": "Scan barcodes and QR codes from images",
-  "subtitle_ocr": "Extract text from images"
+  "subtitle_ocr": "Extract text from images",
+  "link":"https://4evergr8-en.blogspot.com/p/image.html"
 }
