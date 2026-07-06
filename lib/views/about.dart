@@ -49,7 +49,7 @@ class AboutPage extends StatelessWidget {
                 subtitle: const Text('Blogger'),
                 onTap: () {
                   launchUrl(
-                    Uri.parse('https://fourevergreight.blogspot.com/p/image.html'),
+                    Uri.parse(AppLocalizations.of(context)!.link),
                     mode: LaunchMode.externalApplication,
                   );
                 },
