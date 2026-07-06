@@ -80,7 +80,10 @@
 "image_thumbnail_text":"支持视频链接、BV号、b23短链",
 "video_backup":"B站视频备份",
 "ua_string":"UserAgent字符串",
-"start":"开始"
-
-
+"start":"开始",
+"subtitle_url":"URL解码与编辑",
+"subtitle_base64":"Base64编码与解码",
+"subtitle_beast":"兽音译者编码与解码",
+"subtitle_qrcode":"识别图片中的条码和二维码",
+"subtitle_ocr":"从图片中提取文字"
 }
