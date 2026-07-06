@@ -265,4 +265,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get subtitle_ocr => '从图片中提取文字';
+
+  @override
+  String get link => 'https://4evergr8-zh.blogspot.com/p/image.html';
 }
