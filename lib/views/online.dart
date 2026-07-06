@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:picorigin/l10n/app_localizations.dart';
+import 'package:picorigin/string.dart';
 import 'package:picorigin/views/online/search_image.dart';
 import 'package:picorigin/views/online/search_thumbnail.dart';
 import 'package:picorigin/views/online/video_backup.dart';
@@ -28,7 +29,7 @@ class _InternetPageState extends State<InternetPage> {
 
   void _loadInterstitialAd() {
     InterstitialAd.load(
-      adUnitId: "ca-app-pub-9247927382433166/3109732268",
+      adUnitId: adid,
       request: const AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (ad) {
