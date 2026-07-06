@@ -1,6 +1,5 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
-
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -251,4 +250,19 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get start => '开始';
+
+  @override
+  String get subtitle_url => 'URL解码与编辑';
+
+  @override
+  String get subtitle_base64 => 'Base64编码与解码';
+
+  @override
+  String get subtitle_beast => '兽音译者编码与解码';
+
+  @override
+  String get subtitle_qrcode => '识别图片中的条码和二维码';
+
+  @override
+  String get subtitle_ocr => '从图片中提取文字';
 }
