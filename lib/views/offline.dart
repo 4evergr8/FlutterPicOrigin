@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:picorigin/l10n/app_localizations.dart';
+import 'package:picorigin/string.dart';
 import 'package:picorigin/views/offline/decode_base64.dart';
 import 'package:picorigin/views/offline/decode_beast.dart';
 import 'package:picorigin/views/offline/decode_url.dart';
@@ -29,7 +30,7 @@ class _IntranetPageState extends State<IntranetPage> {
 
   void _loadInterstitialAd() {
     InterstitialAd.load(
-      adUnitId: "ca-app-pub-9247927382433166/3109732268",
+      adUnitId: adid,
       request: const AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (ad) {
