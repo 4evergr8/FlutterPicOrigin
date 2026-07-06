@@ -97,7 +97,7 @@ class _IntranetPageState extends State<IntranetPage> {
                 context,
                 icon: Icons.import_export,
                 title: 'URL',
-                subtitle: 'URL解码与编辑',
+                subtitle: AppLocalizations.of(context)!.subtitle_url,
                 onTap: () {
                   _handleAdThenNavigate(() {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const URLDecode()));
@@ -111,7 +111,7 @@ class _IntranetPageState extends State<IntranetPage> {
                 context,
                 icon: Icons.lock_open,
                 title: 'Base64',
-                subtitle: 'Base64编码与解码',
+                subtitle: AppLocalizations.of(context)!.subtitle_base64,
                 onTap: () {
                   _handleAdThenNavigate(() {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const EncodeDecode()));
@@ -124,8 +124,8 @@ class _IntranetPageState extends State<IntranetPage> {
               _buildFunctionItem(
                 context,
                 icon: Icons.lock_open,
-                title: '兽音译者',
-                subtitle: '兽音译者编码与解码',
+                title: AppLocalizations.of(context)!.beast,
+                subtitle: AppLocalizations.of(context)!.subtitle_beast,
                 onTap: () {
                   _handleAdThenNavigate(() {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const BeastEncodeDecode()));
@@ -138,8 +138,8 @@ class _IntranetPageState extends State<IntranetPage> {
               _buildFunctionItem(
                 context,
                 icon: Icons.qr_code,
-                title: '图片扫码',
-                subtitle: '识别图片中的条码和二维码',
+                title: AppLocalizations.of(context)!.qr_code,
+                subtitle: AppLocalizations.of(context)!.subtitle_qrcode,
                 onTap: () {
                   _handleAdThenNavigate(() {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const QRCodeScan()));
@@ -153,7 +153,7 @@ class _IntranetPageState extends State<IntranetPage> {
                 context,
                 icon: Icons.translate,
                 title: AppLocalizations.of(context)!.ocr_offline,
-                subtitle: '从图片中提取文字',
+                subtitle: AppLocalizations.of(context)!.subtitle_ocr,
                 onTap: () {
                   _handleAdThenNavigate(() {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const OfflineOCRScreen()));
