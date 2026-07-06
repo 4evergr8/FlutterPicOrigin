@@ -1,6 +1,5 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
-
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -251,4 +250,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get start => 'Start';
+
+  @override
+  String get subtitle_url => 'URL decoding and editing';
+
+  @override
+  String get subtitle_base64 => 'Base64 encoding and decoding';
+
+  @override
+  String get subtitle_beast => 'Beast language encoding and decoding';
+
+  @override
+  String get subtitle_qrcode => 'Scan barcodes and QR codes from images';
+
+  @override
+  String get subtitle_ocr => 'Extract text from images';
 }
