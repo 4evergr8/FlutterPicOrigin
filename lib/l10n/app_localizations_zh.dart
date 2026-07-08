@@ -269,3 +269,269 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get link => 'https://4evergr8-zh.blogspot.com/p/image.html';
 }
+
+/// The translations for Chinese, as used in Taiwan (`zh_TW`).
+class AppLocalizationsZhTw extends AppLocalizationsZh {
+  AppLocalizationsZhTw(): super('zh_TW');
+
+  @override
+  String get welcome => '歡迎';
+
+  @override
+  String get welcome_full => '歡迎使用，點擊下方按鈕查看使用方法。';
+
+  @override
+  String get more => '了解更多';
+
+  @override
+  String get online => '線上';
+
+  @override
+  String get offline => '離線';
+
+  @override
+  String get about => '關於';
+
+  @override
+  String get cancel => '取消';
+
+  @override
+  String get link_options => '連結選項';
+
+  @override
+  String get can_not_open_link => '無法打開連結';
+
+  @override
+  String get link_copied => '連結已複製:';
+
+  @override
+  String get dismiss => '了解';
+
+  @override
+  String get detail_info => '詳細資訊';
+
+  @override
+  String get selected_copied => '已複製選取的內容';
+
+  @override
+  String get copy => '複製';
+
+  @override
+  String get conform => '確定';
+
+  @override
+  String get source_code => '軟體原始碼';
+
+  @override
+  String get from => '此軟體來源於無聊時的瞎想';
+
+  @override
+  String get website => '搜圖網站';
+
+  @override
+  String get need_connection => '需要聯網';
+
+  @override
+  String get reverse => '反向搜圖';
+
+  @override
+  String get find_sourse => '尋找圖片的出處';
+
+  @override
+  String get artwork => '封面搜圖';
+
+  @override
+  String get artwork_sourse => '尋找影片封面的出處，目前僅支援嗶哩嗶哩';
+
+  @override
+  String get backup => '影片備份';
+
+  @override
+  String get backup_video => '嗶哩嗶哩影片備份，無需登入';
+
+  @override
+  String get speedtest => '網速測試';
+
+  @override
+  String get test_down => '網路下載速度測試';
+
+  @override
+  String get dns => 'DNS 查詢';
+
+  @override
+  String get dns_test => '加密 DNS 查詢測試';
+
+  @override
+  String get ip => 'IP 反查網域';
+
+  @override
+  String get ip_reverse => 'DoHPTR 查詢測試';
+
+  @override
+  String get note1 => '軟體使用了 Flutter 框架和 Dart 語言。';
+
+  @override
+  String get note2 => '本機搜圖功能借助了 Cloudflare Worker 和 R2 儲存桶。';
+
+  @override
+  String get note3 => '線上搜圖功能靈感來源於搜圖 Bot 醬。';
+
+  @override
+  String get note4 => 'OCR 功能來自 google_mlkit_text_recognition。';
+
+  @override
+  String get note5 => '獸音譯者功能來自 CATT-L/MeowTranslator。';
+
+  @override
+  String get ocr_fail => 'OCR 識別失敗';
+
+  @override
+  String get share_process => '分享內容處理';
+
+  @override
+  String get get_text => '接收到的文字';
+
+  @override
+  String get downloading => '下載中...';
+
+  @override
+  String get downloading_vid => '請稍候，正在備份影片...';
+
+  @override
+  String get uploading => '上傳中...';
+
+  @override
+  String get uploading_pic => '請稍候，正在上傳圖片...';
+
+  @override
+  String get upload_success => '圖片上傳成功，URL: ';
+
+  @override
+  String get upload_fail => '圖片上傳失敗:';
+
+  @override
+  String get ocr_zh => '中文字元擷取';
+
+  @override
+  String get ocr_en => '拉丁字元擷取';
+
+  @override
+  String get ocr_ja => '日文字元擷取';
+
+  @override
+  String get qr_code => '行動條碼掃描';
+
+  @override
+  String get choose_pic => '選取圖片';
+
+  @override
+  String get waiting => '請稍候...';
+
+  @override
+  String get success_video => '影片備份完成';
+
+  @override
+  String get decode => '解碼';
+
+  @override
+  String get decode_enter => '輸入待解碼內容';
+
+  @override
+  String get decode_copy => '解碼並複製';
+
+  @override
+  String get encode_copy => '編碼並複製';
+
+  @override
+  String get paste => '貼上';
+
+  @override
+  String get encode => '編碼';
+
+  @override
+  String get dict => '字典';
+
+  @override
+  String get dict_enter => '請輸入字典';
+
+  @override
+  String get encode_enter => '輸入待編碼內容';
+
+  @override
+  String get copied => '已複製';
+
+  @override
+  String get beast => '獸音譯者';
+
+  @override
+  String get ocr_offline => '離線 OCR';
+
+  @override
+  String get choose_char => '選取識別字元';
+
+  @override
+  String get char_chinese => '中文字元';
+
+  @override
+  String get char_lartin => '拉丁字元';
+
+  @override
+  String get char_japanese => '日文字元';
+
+  @override
+  String get image_search => '圖片搜尋';
+
+  @override
+  String get image_search_method => '搜尋方式';
+
+  @override
+  String get image_local => '本機圖片';
+
+  @override
+  String get image_local_text => '從本機選取圖片進行搜尋';
+
+  @override
+  String get image_link => '圖片連結';
+
+  @override
+  String get image_link_text => '輸入圖片連結進行搜尋';
+
+  @override
+  String get worker_link => '圖床連結';
+
+  @override
+  String get search => '搜尋';
+
+  @override
+  String get image_thumbnail => '影片封面搜尋';
+
+  @override
+  String get image_thumbnail_text => '支援影片連結、BV 號、b23 短網址';
+
+  @override
+  String get video_backup => 'B 站影片備份';
+
+  @override
+  String get ua_string => 'UserAgent 字串';
+
+  @override
+  String get start => '開始';
+
+  @override
+  String get subtitle_url => 'URL 解碼與編輯';
+
+  @override
+  String get subtitle_base64 => 'Base64 編碼與解碼';
+
+  @override
+  String get subtitle_beast => '獸音譯者編碼與解碼';
+
+  @override
+  String get subtitle_qrcode => '識別圖片中的條碼與行動條碼';
+
+  @override
+  String get subtitle_ocr => '從圖片中擷取文字';
+
+  @override
+  String get link => 'https://4evergr8-zh.blogspot.com/p/image.html';
+}
