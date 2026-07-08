@@ -23,7 +23,7 @@ jobs:
         run: flutter pub get
 
       - name: 构建 APK (按 ABI 分割)
-        run: flutter build apk --release --split-per-abi --no-tree-shake-icons
+        run: flutter build apk --release --target-platform android-arm,android-arm64 --split-per-abi
 
 
       - name: 上传 arm64-v8a APK
