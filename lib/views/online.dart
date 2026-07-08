@@ -5,6 +5,7 @@ import 'package:picorigin/string.dart';
 import 'package:picorigin/views/online/search_image.dart';
 import 'package:picorigin/views/online/search_thumbnail.dart';
 import 'package:picorigin/views/online/video_backup.dart';
+import 'package:picorigin/widget.dart';
 
 class InternetPage extends StatefulWidget {
   const InternetPage({super.key});
@@ -59,9 +60,16 @@ class _InternetPageState extends State<InternetPage> {
             },
           );
         },
-        onAdFailedToLoad: (err) {
+        onAdFailedToLoad: (e) {
           _isAdReady = false;
           _interstitialAd = null;
+          //showSnackBarGlobal("error", "$e");
+
+          Future.delayed(const Duration(seconds: 10), () {
+            if (mounted) {
+              _loadInterstitialAd();
+            }
+          });
         },
       ),
     );
