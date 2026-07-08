@@ -34,7 +34,14 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: const [Locale('en'), Locale('zh')],
+      supportedLocales: const [
+        Locale('en'),
+        Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'), // 明确指定简体中文
+        Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant', countryCode: 'TW'), // 明确指定台湾繁体
+        Locale('es'),
+        Locale('ko'),
+        Locale('ja'),
+      ],
       title: 'PicOrigin',
       theme: brightness == Brightness.light ? theme.light() : theme.dark(),
       home: const HomeScreen(), // 使用 HomeScreen 组件
