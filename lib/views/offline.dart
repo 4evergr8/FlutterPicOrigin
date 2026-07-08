@@ -7,6 +7,7 @@ import 'package:picorigin/views/offline/decode_beast.dart';
 import 'package:picorigin/views/offline/decode_url.dart';
 import 'package:picorigin/views/offline/image_ocr.dart';
 import 'package:picorigin/views/offline/image_qrcode.dart';
+import 'package:picorigin/widget.dart';
 
 class IntranetPage extends StatefulWidget {
   const IntranetPage({super.key});
@@ -60,9 +61,16 @@ class _IntranetPageState extends State<IntranetPage> {
             },
           );
         },
-        onAdFailedToLoad: (err) {
+        onAdFailedToLoad: (e) {
           _isAdReady = false;
           _interstitialAd = null;
+          //showSnackBarGlobal("error", "$e");
+
+          Future.delayed(const Duration(seconds: 10), () {
+            if (mounted) {
+              _loadInterstitialAd();
+            }
+          });
         },
       ),
     );
@@ -71,7 +79,7 @@ class _IntranetPageState extends State<IntranetPage> {
   void _handleAdThenNavigate(VoidCallback action) {
     _adStateIndex++;
 
-    if (_adStateIndex % 3 == 1 && _isAdReady && _interstitialAd != null) {
+    if (_adStateIndex % 2 == 1 && _isAdReady && _interstitialAd != null) {
       _pendingAction = action;
       _interstitialAd!.show();
     } else {
