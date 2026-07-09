@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:picorigin/l10n/app_localizations.dart';
 import 'package:picorigin/main.dart';
+import 'package:picorigin/service/ad.dart';
 import 'package:picorigin/service/share_handler.dart';
 import 'package:picorigin/views/about.dart';
 import 'package:picorigin/views/offline.dart';
@@ -77,56 +78,64 @@ VoidCallback showSnackBarGlobal(String type, String text) {
 // 弹窗函数
 void showLinkButtonsPopup(BuildContext context, List<List<String>> links) {
   final theme = Theme.of(context);
+  final AdManager adManager = AdManager.instance;
 
   showDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text(AppLocalizations.of(context)!.link_options, style: theme.textTheme.headlineSmall),
+        title: Text(
+          AppLocalizations.of(context)!.link_options,
+          style: theme.textTheme.headlineSmall,
+        ),
         content: ConstrainedBox(
           constraints: BoxConstraints(
-            maxWidth: MediaQuery.of(context).size.width * 0.6, // 弹窗宽度占屏幕宽度的 60%
-            maxHeight: MediaQuery.of(context).size.height * 0.35, // 弹窗高度占屏幕高度的 50%
+            maxWidth: MediaQuery.of(context).size.width * 0.6,
+            maxHeight: MediaQuery.of(context).size.height * 0.35,
           ),
           child: Column(
-            mainAxisSize: MainAxisSize.min, // 确保内容尽可能紧凑
+            mainAxisSize: MainAxisSize.min,
             children: [
               Flexible(
                 child: SingleChildScrollView(
                   child: Column(
-                    mainAxisSize: MainAxisSize.min, // 确保按钮紧凑
-                    children:
-                        links.map((link) {
-                          return ElevatedButton(
-                            onPressed: () async {
-                              // 打开链接
-                              final uri = Uri.parse(link[1]);
-                              if (await canLaunchUrl(uri)) {
-                                await launchUrl(uri, mode: LaunchMode.externalApplication);
-                              } else {
-                                showSnackBarGlobal(
-                                  "error",
-                                  '${AppLocalizations.of(context)!.can_not_open_link} ${link[1]}',
-                                );
-                              }
-                            },
-
-                            child: Text(link[0]),
-                          );
-                        }).toList(),
+                    mainAxisSize: MainAxisSize.min,
+                    children: links.map((link) {
+                      return ElevatedButton(
+                        onPressed: () async {
+                          final uri = Uri.parse(link[1]);
+                          if (await canLaunchUrl(uri)) {
+                            await launchUrl(
+                              uri,
+                              mode: LaunchMode.externalApplication,
+                            );
+                          } else {
+                            showSnackBarGlobal(
+                              "error",
+                              '${AppLocalizations.of(context)!.can_not_open_link} ${link[1]}',
+                            );
+                          }
+                        },
+                        child: Text(link[0]),
+                      );
+                    }).toList(),
                   ),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   ElevatedButton.icon(
                     onPressed: () {
-                      Navigator.of(context).pop(); // 关闭弹窗
+                      Navigator.of(context).pop();
+
+                      adManager.showAdThen(() {});
                     },
-                    icon: Icon(Icons.check), // 添加确认图标
-                    label: Text(AppLocalizations.of(context)!.dismiss),
+                    icon: const Icon(Icons.check),
+                    label: Text(
+                      AppLocalizations.of(context)!.dismiss,
+                    ),
                   ),
                 ],
               ),
