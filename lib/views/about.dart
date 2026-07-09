@@ -43,17 +43,6 @@ class AboutPage extends StatelessWidget {
                   );
                 },
               ),
-              ListTile(
-                leading: const Icon(Icons.web),
-                title: Text(AppLocalizations.of(context)!.website),
-                subtitle: const Text('Blogger'),
-                onTap: () {
-                  launchUrl(
-                    Uri.parse(AppLocalizations.of(context)!.link),
-                    mode: LaunchMode.externalApplication,
-                  );
-                },
-              ),
               const SizedBox(height: 8), // 添加段落间距
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start, // 设置为左对齐
