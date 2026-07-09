@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:picorigin/l10n/app_localizations.dart';
-import 'package:picorigin/string.dart';
+import 'package:picorigin/service/ad.dart';
 import 'package:picorigin/views/online/search_image.dart';
 import 'package:picorigin/views/online/search_thumbnail.dart';
 import 'package:picorigin/views/online/video_backup.dart';
-import 'package:picorigin/widget.dart';
 
 class InternetPage extends StatefulWidget {
   const InternetPage({super.key});
@@ -15,83 +13,24 @@ class InternetPage extends StatefulWidget {
 }
 
 class _InternetPageState extends State<InternetPage> {
-  InterstitialAd? _interstitialAd;
-  bool _isAdReady = false;
-
-  int _adStateIndex = 0; // 0=显示 1=不显示（循环）
-
-  VoidCallback? _pendingAction;
+  final AdManager _adManager = AdManager.instance;
 
   @override
   void initState() {
     super.initState();
-    _loadInterstitialAd();
-  }
-
-  void _loadInterstitialAd() {
-    InterstitialAd.load(
-      adUnitId: adid,
-      request: const AdRequest(),
-      adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (ad) {
-          _interstitialAd = ad;
-          _isAdReady = true;
-
-          ad.fullScreenContentCallback = FullScreenContentCallback(
-            onAdDismissedFullScreenContent: (ad) {
-              ad.dispose();
-              _interstitialAd = null;
-              _isAdReady = false;
-
-              _pendingAction?.call();
-              _pendingAction = null;
-
-              _loadInterstitialAd();
-            },
-            onAdFailedToShowFullScreenContent: (ad, err) {
-              ad.dispose();
-              _interstitialAd = null;
-              _isAdReady = false;
-
-              _pendingAction?.call();
-              _pendingAction = null;
-
-              _loadInterstitialAd();
-            },
-          );
-        },
-        onAdFailedToLoad: (e) {
-          _isAdReady = false;
-          _interstitialAd = null;
-          //showSnackBarGlobal("error", "$e");
-
-          Future.delayed(const Duration(seconds: 10), () {
-            if (mounted) {
-              _loadInterstitialAd();
-            }
-          });
-        },
-      ),
-    );
-  }
-
-  void _handleAdThenNavigate(VoidCallback action) {
-    _adStateIndex++;
-
-    if (_adStateIndex % 2 == 1 && _isAdReady && _interstitialAd != null) {
-      _pendingAction = action;
-      _interstitialAd!.show();
-    } else {
-      action();
-    }
+    _adManager.loadInterstitialAd();
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.online, style: theme.textTheme.headlineMedium),
+        title: Text(
+          AppLocalizations.of(context)!.online,
+          style: theme.textTheme.headlineMedium,
+        ),
         backgroundColor: theme.colorScheme.inversePrimary,
       ),
       body: Padding(
@@ -106,13 +45,19 @@ class _InternetPageState extends State<InternetPage> {
                 title: AppLocalizations.of(context)!.reverse,
                 subtitle: AppLocalizations.of(context)!.find_sourse,
                 onTap: () {
-                  _handleAdThenNavigate(() {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const ImageSearchScreen()));
+                  _adManager.showAdThen(() {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                        const ImageSearchScreen(),
+                      ),
+                    );
                   });
                 },
               ),
 
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
 
               _buildFunctionItem(
                 context,
@@ -120,13 +65,19 @@ class _InternetPageState extends State<InternetPage> {
                 title: AppLocalizations.of(context)!.artwork,
                 subtitle: AppLocalizations.of(context)!.artwork_sourse,
                 onTap: () {
-                  _handleAdThenNavigate(() {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const ThumbnailSearchScreen()));
+                  _adManager.showAdThen(() {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                        const ThumbnailSearchScreen(),
+                      ),
+                    );
                   });
                 },
               ),
 
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
 
               _buildFunctionItem(
                 context,
@@ -134,8 +85,14 @@ class _InternetPageState extends State<InternetPage> {
                 title: AppLocalizations.of(context)!.backup,
                 subtitle: AppLocalizations.of(context)!.backup_video,
                 onTap: () {
-                  _handleAdThenNavigate(() {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const BackupScreen()));
+                  _adManager.showAdThen(() {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                        const BackupScreen(),
+                      ),
+                    );
                   });
                 },
               ),
@@ -147,19 +104,27 @@ class _InternetPageState extends State<InternetPage> {
   }
 
   Widget _buildFunctionItem(
-    BuildContext context, {
-    required IconData icon,
-    required String title,
-    required String subtitle,
-    required VoidCallback onTap,
-  }) {
+      BuildContext context, {
+        required IconData icon,
+        required String title,
+        required String subtitle,
+        required VoidCallback onTap,
+      }) {
     return Card(
       elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: ListTile(
         leading: Icon(icon, size: 32),
-        title: Text(title, style: Theme.of(context).textTheme.titleMedium),
-        subtitle: Text(subtitle, style: Theme.of(context).textTheme.bodySmall),
+        title: Text(
+          title,
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        subtitle: Text(
+          subtitle,
+          style: Theme.of(context).textTheme.bodySmall,
+        ),
         onTap: onTap,
       ),
     );
